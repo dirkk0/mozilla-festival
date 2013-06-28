@@ -2,11 +2,22 @@
 ** GAME PLAYER CLASS
 **************************************************/
 var Player = function(startX, startY) {
+    var getColor = function() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.round(Math.random() * 15)];
+        }
+        return color;
+    }
+
 	var x = startX,
 		y = startY,
+                color = getColor(),
 		id,
 		moveAmount = 2;
-	
+
+
 	// Getters and setters
 	var getX = function() {
 		return x;
@@ -49,6 +60,7 @@ var Player = function(startX, startY) {
 
 	// Draw player
 	var draw = function(ctx) {
+                ctx.fillStyle=color;
 		ctx.fillRect(x-5, y-5, 10, 10);
 	};
 
